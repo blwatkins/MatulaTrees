@@ -10,6 +10,9 @@
   * change all ints to long long ints
   * update output to include node values
   * query prime factorization website
+  * more verbose output
+    * pinging server
+    * looking up number
 
 ## Display
 
