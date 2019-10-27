@@ -18,6 +18,4 @@ public class Number {
         primeFactors = null;
     }
 
-
-
 }
