@@ -1,4 +1,4 @@
-package primeRequests;
+package pythonRequests;
 
 import java.io.BufferedReader;
 import java.io.InputStream;

@@ -5,9 +5,9 @@ package numbers;
 
 import java.util.ArrayList;
 
-import primeRequests.NthPrimeRequester;
-import primeRequests.PrimeFactorizationRequester;
-import primeRequests.PrimeIndexRequester;
+import pythonRequests.NthPrimeRequester;
+import pythonRequests.PrimeFactorizationRequester;
+import pythonRequests.PrimeIndexRequester;
 
 public class Number {
     private long value;
