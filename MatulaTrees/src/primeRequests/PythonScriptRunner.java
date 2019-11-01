@@ -6,9 +6,9 @@ import java.io.InputStreamReader;
 
 import java.util.ArrayList;
 
-public abstract class PythonScriptRunner {
+abstract class PythonScriptRunner {
 
-    public static ArrayList<Long> runPythonScript(String scriptName, long num) {
+    static ArrayList<Long> runPythonScript(String scriptName, long num) {
         ArrayList<Long> result = null;
 
         String command = "python python/" + scriptName + ".py " + num;
