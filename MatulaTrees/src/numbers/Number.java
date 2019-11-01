@@ -58,7 +58,7 @@ public class Number {
         String result  = "";
 
         for (int i = 0; i < primeFactors.size(); i++) {
-            result += i;
+            result += primeFactors.get(i);
 
             if (i != primeFactors.size() - 1) {
                 result += ", ";
