@@ -27,7 +27,6 @@ public class NumberStore {
 
         for (Long l: numbers.keySet()) {
             System.out.println(numbers.get(l));
-            System.out.println();
         }
 
     }
