@@ -30,6 +30,15 @@ public class Number {
         this.primeFactors = primeFactors;
     }
 
+    public String toString() {
+        String out = "Number \n";
+        out += "    value = " + value + "\n";
+        out += "    isPrime = " + isPrime + "\n";
+        out += "    primeIndex = " + primeIndex + "\n";
+        out += "    primeFactors = " + getPrimeFactorsString() + "\n";
+        return out;
+    }
+
     private void buildNumber() {
         long possiblePrimeIndex = PrimeIndexRequester.requestPrimeIndex(value);
         long nthPrime = NthPrimeRequester.requestNthPrime(possiblePrimeIndex);
@@ -43,6 +52,21 @@ public class Number {
         }
 
         primeFactors = PrimeFactorizationRequester.requestPrimeFactors(value);
+    }
+
+    private String getPrimeFactorsString() {
+        String result  = "";
+
+        for (int i = 0; i < primeFactors.size(); i++) {
+            result += i;
+
+            if (i != primeFactors.size() - 1) {
+                result += ", ";
+            }
+
+        }
+
+        return result;
     }
 
 }
