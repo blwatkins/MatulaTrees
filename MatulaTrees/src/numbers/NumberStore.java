@@ -23,4 +23,13 @@ public class NumberStore {
         numbers.put(n, number);
     }
 
+    public static void output() {
+
+        for (Long l: numbers.keySet()) {
+            System.out.println(numbers.get(l));
+            System.out.println();
+        }
+
+    }
+
 }
