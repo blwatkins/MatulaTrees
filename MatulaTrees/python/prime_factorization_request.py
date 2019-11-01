@@ -26,9 +26,12 @@ def printPrimeFactorization(string):
         print('Not a number')
 
 def printFactors(factors):
+    factorString = "";
 
     for factor in factors:
-        print(factor)
+        factorString += str(factor) + " "
+
+    print(factorString)
 
 def getInteger(numString):
     x = -1
