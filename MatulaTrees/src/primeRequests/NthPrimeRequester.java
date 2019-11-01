@@ -1,4 +1,18 @@
 package primeRequests;
 
-public class NthPrimeRequester {
+import java.util.ArrayList;
+
+public class NthPrimeRequester extends PythonScriptRunner{
+
+    public static long nthPrimeRequest(long num) {
+        ArrayList<Long> requestResult = runPythonScript("nth_prime", num);
+        long result = -1;
+
+        if (requestResult != null) {
+            result = requestResult.get(0);
+        }
+
+        return result;
+    }
+
 }
