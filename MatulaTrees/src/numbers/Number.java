@@ -5,6 +5,9 @@ package numbers;
 
 import java.util.ArrayList;
 
+import processing.data.JSONArray;
+import processing.data.JSONObject;
+
 import pythonRequests.NthPrimeRequester;
 import pythonRequests.PrimeFactorizationRequester;
 import pythonRequests.PrimeIndexRequester;
@@ -28,6 +31,32 @@ public class Number {
         this.isPrime = isPrime;
         this.primeIndex = primeIndex;
         this.primeFactors = primeFactors;
+    }
+
+    public long getValue() {
+        return value;
+    }
+
+    public boolean isPrime() {
+        return isPrime;
+    }
+
+    public long getPrimeIndex() {
+        return primeIndex;
+    }
+
+    public ArrayList<Long> getPrimeFactors() {
+        return primeFactors;
+    }
+
+    public JSONObject getJSON() {
+        JSONObject number = new JSONObject();
+        number.setLong("value", getValue());
+        number.setBoolean("isPrime", isPrime());
+        number.setLong("primeIndex", getPrimeIndex());
+        JSONArray primeFactors = createFactorsArray();
+        number.setJSONArray("primeFactors", primeFactors);
+        return number;
     }
 
     public String toString() {
@@ -67,6 +96,16 @@ public class Number {
         }
 
         return result;
+    }
+
+    private JSONArray createFactorsArray() {
+        JSONArray factors = new JSONArray();
+
+        for (long number: primeFactors) {
+            factors.append(number);
+        }
+
+        return factors;
     }
 
 }

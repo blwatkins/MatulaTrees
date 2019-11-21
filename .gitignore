@@ -3,3 +3,6 @@
 libraries/
 Current Matula Forest
 .idea/
+__pycache__/
+out/
+MatulaTrees/data/out/
