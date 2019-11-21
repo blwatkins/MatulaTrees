@@ -26,11 +26,12 @@ public class Number {
         buildNumber();
     }
 
-    public Number(long value, boolean isPrime, long primeIndex, ArrayList<Long> primeFactors) {
-        this.value = value;
-        this.isPrime = isPrime;
-        this.primeIndex = primeIndex;
-        this.primeFactors = primeFactors;
+    public Number(JSONObject number) {
+        value = number.getInt("value");
+        isPrime = number.getBoolean("isPrime");
+        primeIndex = number.getInt("primeIndex");
+        primeFactors = new ArrayList<>();
+        loadPrimeFactors(number);
     }
 
     public long getValue() {
@@ -108,4 +109,13 @@ public class Number {
         return factors;
     }
 
+    private void loadPrimeFactors(JSONObject number) {
+        JSONArray primeFactorsJSON = number.getJSONArray("primeFactors");
+
+        for (int i = 0; i < primeFactorsJSON.size(); i++) {
+            long factor = primeFactorsJSON.getLong(i);
+            primeFactors.add(factor);
+        }
+
+    }
 }
