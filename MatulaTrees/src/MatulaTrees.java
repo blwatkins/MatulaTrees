@@ -15,6 +15,9 @@ public class MatulaTrees extends PApplet {
     }
 
     public void setup() {
+        NumberStore.loadNumbers(this);
+        NumberStore.output();
+        System.out.println("-----------------------------");
         NumberStore.addNumber(2);
         NumberStore.addNumber(3);
         NumberStore.addNumber(4);
