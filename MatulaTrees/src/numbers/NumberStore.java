@@ -22,9 +22,9 @@ public class NumberStore {
         return numbers.containsKey(n);
     }
 
-    private static void createNumber(long n) {
-        Number number = new Number(n);
-        numbers.put(n, number);
+    private static void createNumber(long value) {
+        Number number = new Number(value);
+        numbers.put(value, number);
     }
 
     public static void output() {
@@ -36,11 +36,13 @@ public class NumberStore {
     }
 
     public static void loadNumbers(PApplet p) {
-        JSONArray numberData = p.loadJSONArray("numbers.json");
+        JSONArray numberData = p.loadJSONArray("out/numbers.json");
 
         for (int i = 0; i < numberData.size(); i++) {
             JSONObject numberJSON = numberData.getJSONObject(i);
-            //Number n = new Number(numberJSON);
+            Number number = new Number(numberJSON);
+            long value = number.getValue();
+            numbers.put(value, number);
         }
 
     }
