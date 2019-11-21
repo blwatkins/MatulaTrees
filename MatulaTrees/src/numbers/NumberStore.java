@@ -3,7 +3,6 @@
 
 package numbers;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 import processing.core.PApplet;
@@ -38,6 +37,12 @@ public class NumberStore {
 
     public static void loadNumbers(PApplet p) {
         JSONArray numberData = p.loadJSONArray("numbers.json");
+
+        for (int i = 0; i < numberData.size(); i++) {
+            JSONObject numberJSON = numberData.getJSONObject(i);
+            //Number n = new Number(numberJSON);
+        }
+
     }
 
     public static void saveNumbers(PApplet p) {
