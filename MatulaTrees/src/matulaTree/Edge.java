@@ -18,6 +18,10 @@ public class Edge {
         return child;
     }
 
+    public void setChild(Node child) {
+        this.child = child;
+    }
+
     public long getParentPrimeFactor() {
         return parentPrimeFactor;
     }
