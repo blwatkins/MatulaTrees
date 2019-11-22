@@ -1,7 +1,7 @@
-import matulaTree.MatulaTree;
 import processing.core.PApplet;
 
 import numbers.NumberStore;
+import matulaTree.MatulaTree;
 
 public class MatulaTrees extends PApplet {
 
@@ -15,8 +15,12 @@ public class MatulaTrees extends PApplet {
     }
 
     public void setup() {
-        MatulaTree m = new MatulaTree(2);
+        NumberStore.loadNumbers(this);
+        NumberStore.loadNthPrimes(this);
+        MatulaTree m = new MatulaTree(199);
         System.out.println(m);
+        NumberStore.saveNumbers(this);
+        NumberStore.saveNthPrimes(this);
     }
 
     public void draw() {
