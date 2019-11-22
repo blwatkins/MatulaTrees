@@ -72,7 +72,17 @@ public class Number {
     private void buildNumber() {
         long possiblePrimeIndex = PrimeIndexRequester.requestPrimeIndex(value);
         long nthPrime = NthPrimeRequester.requestNthPrime(possiblePrimeIndex);
+        boolean validResults = possiblePrimeIndex != -1 && nthPrime != -1;
 
+        if (validResults) {
+            buildNumber(nthPrime, possiblePrimeIndex);
+            primeFactors = PrimeFactorizationRequester.requestPrimeFactors(value);
+            checkForValidPrimeFactors();
+        }
+
+    }
+
+    private void buildNumber(long nthPrime, long possiblePrimeIndex) {
         if (value == nthPrime) {
             isPrime = true;
             primeIndex = possiblePrimeIndex;
@@ -80,8 +90,12 @@ public class Number {
             isPrime = false;
             primeIndex = -1;
         }
+    }
 
-        primeFactors = PrimeFactorizationRequester.requestPrimeFactors(value);
+    private void checkForValidPrimeFactors() {
+        if (primeFactors.isEmpty()) {
+            primeFactors = null;
+        }
     }
 
     private String getPrimeFactorsString() {
