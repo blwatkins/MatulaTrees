@@ -27,14 +27,20 @@ public class Node {
         return number;
     }
 
+    public void setParent(Node parent) {
+        this.parent = parent;
+    }
+
     public String toString() {
         String out = "NODE \n";
         out += "    value = " + number.getValue() + "\n";
-//        out += "    children = " + getChildrenString() + "\n";
+        out += "    children = " + getChildrenString() + "\n";
 
-//        for (Edge e: children) {
-//            out += e.getChild().toString();
-//        }
+        for (Edge e: children) {
+            if (e.getChild() != null) {
+                out += e.getChild().toString();
+            }
+        }
 
         return out;
     }
@@ -50,11 +56,14 @@ public class Node {
 
         for (int i = 0; i < children.size(); i++) {
             Node child = children.get(i).getChild();
-            long value = child.getNumber().getValue();
-            out += "value";
 
-            if (i != children.size() - 1) {
-                out += ", ";
+            if (child != null) {
+                long value = child.getNumber().getValue();
+                out += value;
+
+                if (i != children.size() - 1) {
+                    out += ", ";
+                }
             }
 
         }
