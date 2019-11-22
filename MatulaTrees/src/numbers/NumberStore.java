@@ -12,9 +12,11 @@ import java.util.HashMap;
 import processing.core.PApplet;
 import processing.data.JSONArray;
 import processing.data.JSONObject;
+import pythonRequests.NthPrimeRequester;
 
 public class NumberStore {
     private static HashMap<Long, Number> numbers = new HashMap<>();
+    private static HashMap<Long, Long> nthPrimes = new HashMap<>();
 
     public static Number getNumber(long value) {
         if (!hasNumber(value)) {
@@ -24,20 +26,43 @@ public class NumberStore {
         return numbers.get(value);
     }
 
+    public static long getNthPrimeNumber(long n) {
+        if (!hasNthPrimeNumber(n)) {
+            addNthPrimeNumber(n);
+        }
+
+        return nthPrimes.get(n);
+    }
+
     private static void addNumber(long value) {
         createNumber(value);
+    }
+
+    private static void addNthPrimeNumber(long n) {
+        long nthPrime = NthPrimeRequester.requestNthPrime(n);
+        nthPrimes.put(n, nthPrime);
     }
 
     private static boolean hasNumber(long value) {
         return numbers.containsKey(value);
     }
 
+    private static boolean hasNthPrimeNumber(long n) {
+        return nthPrimes.containsKey(n);
+    }
+
     private static void createNumber(long value) {
         System.out.println("-------------------------");
         System.out.println("CREATING NUMBER: " + value);
         Number number = new Number(value);
+
         if (number.getPrimeFactors() != null) {
             numbers.put(value, number);
+
+            if (number.isPrime()) {
+                nthPrimes.put(number.getPrimeIndex(), number.getValue());
+            }
+
         }
     }
 
