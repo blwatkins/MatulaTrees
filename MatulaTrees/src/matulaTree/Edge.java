@@ -4,11 +4,11 @@
 package matulaTree;
 
 public class Edge {
-    private int parentPrimeFactor;
-    private int childPrimeFactor;
+    private long parentPrimeFactor;
+    private long childPrimeFactor;
     private Node child;
 
-    public Edge(int parentPrimeFactor) {
+    public Edge(long parentPrimeFactor) {
         this.parentPrimeFactor = parentPrimeFactor;
         childPrimeFactor = 0;
         child = null;

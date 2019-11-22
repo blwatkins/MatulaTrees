@@ -16,6 +16,13 @@ public class Node {
         this.number = number;
         parent = null;
         children = new ArrayList<>();
+        addChildren();
+    }
+
+    private void addChildren() {
+        for (long factor: number.getPrimeFactors()) {
+            children.add(new Edge(factor));
+        }
     }
 
 }

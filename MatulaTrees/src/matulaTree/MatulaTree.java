@@ -20,6 +20,7 @@ public class MatulaTree {
 
     private void createRoot(long value) {
         Number number = NumberStore.getNumber(value);
+        root = new Node(number);
     }
 
 }
