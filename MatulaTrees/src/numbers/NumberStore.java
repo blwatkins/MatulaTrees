@@ -1,5 +1,9 @@
 // NumberStore Class
 // Stores a single instance of each number
+// The NumberStore ensures that only one copy of every number exists in the environment
+// This prevents multiple python requests from having to be made during the course of the program running
+// The NumberStore can be output to a JSON Array and loaded in during the next program run
+// This also prevents excess python requests from having to be made over multiple executions of the program
 
 package numbers;
 
@@ -12,14 +16,20 @@ import processing.data.JSONObject;
 public class NumberStore {
     private static HashMap<Long, Number> numbers = new HashMap<>();
 
-    public static void addNumber(long n) {
-        if (!hasNumber(n)) {
-            createNumber(n);
+    public static Number getNumber(long value) {
+        if (!hasNumber(value)) {
+            addNumber(value);
         }
+
+        return numbers.get(value);
     }
 
-    private static boolean hasNumber(long n) {
-        return numbers.containsKey(n);
+    private static void addNumber(long value) {
+        createNumber(value);
+    }
+
+    private static boolean hasNumber(long value) {
+        return numbers.containsKey(value);
     }
 
     private static void createNumber(long value) {
