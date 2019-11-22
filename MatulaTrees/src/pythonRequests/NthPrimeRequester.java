@@ -12,6 +12,7 @@ public class NthPrimeRequester extends PythonScriptRunner {
             result = requestResult.get(0);
         }
 
+        System.out.println("SCRIPT RESULT : " + result);
         return result;
     }
 

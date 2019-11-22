@@ -11,6 +11,7 @@ public class PrimeFactorizationRequester extends PythonScriptRunner {
             requestResult = new ArrayList<>();
         }
 
+        System.out.println("SCRIPT RESULT : " + requestResult);
         return requestResult;
     }
 }

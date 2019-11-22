@@ -12,6 +12,7 @@ public class PrimeIndexRequester extends PythonScriptRunner {
             result = requestResult.get(0);
         }
 
+        System.out.println("SCRIPT RESULT : " + result);
         return result;
     }
 
