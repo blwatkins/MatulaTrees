@@ -23,4 +23,21 @@ public class MatulaTree {
         root = new Node(number);
     }
 
+    private void buildTree() {
+        buildTree(root);
+    }
+
+    private void buildTree(Node current) {
+        for (Edge edge : current.getChildren()) {
+            createChildNode(current, edge);
+        }
+    }
+
+    private void createChildNode(Node parent, Edge edge) {
+        long parentPrimeFactor = edge.getParentPrimeFactor();
+        long parentValue = parent.getNumber().getValue();
+        long prime_index = parentValue / parentPrimeFactor;
+        //ong prime = NumberStore.getNthPrimeNumber(prime_index);
+    }
+
 }

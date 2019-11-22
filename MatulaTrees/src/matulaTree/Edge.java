@@ -14,4 +14,7 @@ public class Edge {
         child = null;
     }
 
+    public long getParentPrimeFactor() {
+        return parentPrimeFactor;
+    }
 }

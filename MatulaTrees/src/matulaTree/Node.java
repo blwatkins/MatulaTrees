@@ -19,6 +19,14 @@ public class Node {
         addChildren();
     }
 
+    public ArrayList<Edge> getChildren() {
+        return children;
+    }
+
+    public Number getNumber() {
+        return number;
+    }
+
     private void addChildren() {
         for (long factor: number.getPrimeFactors()) {
             children.add(new Edge(factor));
