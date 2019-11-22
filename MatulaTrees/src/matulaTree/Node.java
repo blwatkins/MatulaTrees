@@ -1,3 +1,6 @@
+// Node
+// A single node of the MatulaTree
+
 package matulaTree;
 
 import java.util.ArrayList;
