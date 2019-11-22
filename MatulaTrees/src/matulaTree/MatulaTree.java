@@ -8,7 +8,6 @@ import numbers.NumberStore;
 
 public class MatulaTree {
     private Node root;
-    private int order;
     private boolean building;
 
     public MatulaTree(long value) {
@@ -31,6 +30,7 @@ public class MatulaTree {
     private void createRoot(long value) {
         Number number = NumberStore.getNumber(value);
         root = new Node(number);
+        root.addChildrenFromFactors();
     }
 
     private void buildTree() {
@@ -39,25 +39,50 @@ public class MatulaTree {
 
     private void buildTree(Node current) {
         for (Edge edge : current.getChildren()) {
-            createChildNode(current, edge);
+            buildChild(current, edge);
         }
     }
 
-    private void createChildNode(Node parent, Edge edge) {
+    private void buildChild(Node parent, Edge edge) {
         long parentPrimeFactor = edge.getParentPrimeFactor();
         long parentValue = parent.getNumber().getValue();
         long prime_index = parentValue / parentPrimeFactor;
         long prime = NumberStore.getNthPrimeNumber(prime_index);
+        long parentPrimeFactorIndex = NumberStore.getNumber(parentPrimeFactor).getPrimeIndex();
+        long childValue = prime * parentPrimeFactorIndex;
 
-        if (prime != -1 ) {
-            order++;
-            long parentPrimeFactorIndex = NumberStore.getNumber(parentPrimeFactor).getPrimeIndex();
-            long childValue = prime * parentPrimeFactorIndex;
+        if (prime != -1) {
+            Node child = createChildNode(parent, childValue);
+            edge.setChild(child);
 
-            Number childNumber = NumberStore.getNumber(childValue);
-            Node childNode = new Node(childNumber);
-            childNode.setParent(parent);
-            edge.setChild(childNode);
+            if (parentPrimeFactorIndex != 1) {
+                addChildren(child, prime);
+            }
+
+            if (parentPrimeFactor != 2) {
+                buildTree(child);
+            }
+        }
+
+    }
+
+    private Node createChildNode(Node parent, long value) {
+        Number number = NumberStore.getNumber(value);
+        Node child = new Node(number);
+        child.setParent(parent);
+        return child;
+    }
+
+    private void addChildren(Node child, long prime) {
+        boolean currentChildPrimeFound = false;
+
+        for (long factor: child.getNumber().getPrimeFactors()) {
+            if (factor == prime && !currentChildPrimeFound) {
+                currentChildPrimeFound = true;
+                continue;
+            }
+
+            child.addChild(new Edge(factor));
         }
     }
 
