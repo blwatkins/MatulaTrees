@@ -23,8 +23,12 @@ public class NumberStore {
     }
 
     private static void createNumber(long value) {
+        System.out.println("-------------------------");
+        System.out.println("CREATING NUMBER: " + value);
         Number number = new Number(value);
-        numbers.put(value, number);
+        if (number.getPrimeFactors() != null) {
+            numbers.put(value, number);
+        }
     }
 
     public static void output() {
