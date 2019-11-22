@@ -58,12 +58,14 @@ public class NumberStore {
 
         if (number.getPrimeFactors() != null) {
             numbers.put(value, number);
+            boolean addToNthPrimes = number.isPrime() && !hasNthPrimeNumber(number.getValue());
 
-            if (number.isPrime()) {
+            if (addToNthPrimes) {
                 nthPrimes.put(number.getPrimeIndex(), number.getValue());
             }
 
         }
+
     }
 
     public static void output() {
