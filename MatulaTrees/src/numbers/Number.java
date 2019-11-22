@@ -62,7 +62,7 @@ public class Number {
     }
 
     public String toString() {
-        String out = "Number \n";
+        String out = "NUMBER \n";
         out += "    value = " + value + "\n";
         out += "    isPrime = " + isPrime + "\n";
         out += "    primeIndex = " + primeIndex + "\n";
