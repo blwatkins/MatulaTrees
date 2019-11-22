@@ -16,7 +16,6 @@ public class Node {
         this.number = number;
         parent = null;
         children = new ArrayList<>();
-        addChildren();
     }
 
     public ArrayList<Edge> getChildren() {
@@ -29,6 +28,16 @@ public class Node {
 
     public void setParent(Node parent) {
         this.parent = parent;
+    }
+
+    public void addChild(Edge e) {
+        children.add(e);
+    }
+
+    public void addChildrenFromFactors() {
+        for (long factor: number.getPrimeFactors()) {
+            children.add(new Edge(factor));
+        }
     }
 
     public String toString() {
@@ -45,14 +54,8 @@ public class Node {
         return out;
     }
 
-    private void addChildren() {
-        for (long factor: number.getPrimeFactors()) {
-            children.add(new Edge(factor));
-        }
-    }
-
     private String getChildrenString() {
-        String out  = "";
+        String out  = "[";
 
         for (int i = 0; i < children.size(); i++) {
             Node child = children.get(i).getChild();
@@ -68,6 +71,7 @@ public class Node {
 
         }
 
+        out += "]\n";
         return  out;
     }
 
