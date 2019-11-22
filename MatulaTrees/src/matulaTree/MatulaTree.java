@@ -9,9 +9,12 @@ import numbers.NumberStore;
 public class MatulaTree {
     private Node root;
     private int order;
+    private boolean building;
 
     public MatulaTree(long value) {
+        building = true;
         createTree(value);
+        building = false;
     }
 
     public String toString() {
@@ -22,6 +25,7 @@ public class MatulaTree {
 
     private void createTree(long value) {
         createRoot(value);
+        buildTree();
     }
 
     private void createRoot(long value) {
@@ -43,7 +47,18 @@ public class MatulaTree {
         long parentPrimeFactor = edge.getParentPrimeFactor();
         long parentValue = parent.getNumber().getValue();
         long prime_index = parentValue / parentPrimeFactor;
-        //ong prime = NumberStore.getNthPrimeNumber(prime_index);
+        long prime = NumberStore.getNthPrimeNumber(prime_index);
+
+        if (prime != -1 ) {
+            order++;
+            long parentPrimeFactorIndex = NumberStore.getNumber(parentPrimeFactor).getPrimeIndex();
+            long childValue = prime * parentPrimeFactorIndex;
+
+            Number childNumber = NumberStore.getNumber(childValue);
+            Node childNode = new Node(childNumber);
+            childNode.setParent(parent);
+            edge.setChild(childNode);
+        }
     }
 
 }
