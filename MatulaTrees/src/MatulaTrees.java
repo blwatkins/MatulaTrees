@@ -1,3 +1,4 @@
+import matulaTree.MatulaTree;
 import processing.core.PApplet;
 
 import numbers.NumberStore;
@@ -14,11 +15,8 @@ public class MatulaTrees extends PApplet {
     }
 
     public void setup() {
-        NumberStore.loadNumbers(this);
-        NumberStore.output();
-        System.out.println("-----------------------------");
-        NumberStore.output();
-        NumberStore.saveNumbers(this);
+        MatulaTree m = new MatulaTree(2);
+        System.out.println(m);
     }
 
     public void draw() {

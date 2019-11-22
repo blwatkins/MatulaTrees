@@ -32,9 +32,9 @@ public class Node {
         out += "    value = " + number.getValue() + "\n";
         out += "    children = " + getChildrenString() + "\n";
 
-        for (Edge e: children) {
-            out += e.getChild().toString();
-        }
+//        for (Edge e: children) {
+//            out += e.getChild().toString();
+//        }
 
         return out;
     }
