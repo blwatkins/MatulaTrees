@@ -1,4 +1,10 @@
+// MatulaTree
+// A Matula Tree class
+
 package matulaTree;
+
+import numbers.Number;
+import numbers.NumberStore;
 
 public class MatulaTree {
     private Node root;
@@ -13,7 +19,7 @@ public class MatulaTree {
     }
 
     private void createRoot(long value) {
-
+        Number number = NumberStore.getNumber(value);
     }
 
 }
