@@ -24,8 +24,3 @@
   * button menu functionality for screen select and display
   * hide and show menu based on mouse position
   * thousands separators for numbers
-
-# Mercedes-Benz Art Competition
-
-  * research sequences
-  * check if digital submissions are accepted
