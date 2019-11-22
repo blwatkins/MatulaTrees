@@ -30,7 +30,7 @@ public class Node {
     public String toString() {
         String out = "NODE \n";
         out += "    value = " + number.getValue() + "\n";
-        out += "    children = " + getChildrenString() + "\n";
+//        out += "    children = " + getChildrenString() + "\n";
 
 //        for (Edge e: children) {
 //            out += e.getChild().toString();
