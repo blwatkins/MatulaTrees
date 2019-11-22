@@ -12,6 +12,7 @@ abstract class PythonScriptRunner {
         ArrayList<Long> result = null;
 
         String command = "python python/" + scriptName + ".py " + num;
+        System.out.println("RUNNING SCRIPT: " + command);
 
         try {
             Process p = Runtime.getRuntime().exec(command);
