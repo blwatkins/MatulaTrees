@@ -42,14 +42,21 @@ abstract class PythonScriptRunner {
 
     private static ArrayList<Long> parseResultString(String string){
         ArrayList<Long> result = new ArrayList<>();
-        String[] longs = string.split(" ");
 
-        for (String longString: longs) {
-            Long num = Long.parseLong(longString);
-            result.add(num);
+        if (string != null) {
+            addNumbers(string, result);
         }
 
         return result;
+    }
+
+    private static void addNumbers(String string, ArrayList<Long> result) {
+        String[] longs = string.split(" ");
+
+        for (String longString : longs) {
+            Long num = Long.parseLong(longString);
+            result.add(num);
+        }
     }
 
 }
