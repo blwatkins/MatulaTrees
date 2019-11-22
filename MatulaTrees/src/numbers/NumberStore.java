@@ -58,9 +58,8 @@ public class NumberStore {
 
         if (number.getPrimeFactors() != null) {
             numbers.put(value, number);
-            boolean addToNthPrimes = number.isPrime() && !hasNthPrimeNumber(number.getValue());
 
-            if (addToNthPrimes) {
+            if (number.isPrime()) {
                 nthPrimes.put(number.getPrimeIndex(), number.getValue());
             }
 
@@ -84,6 +83,21 @@ public class NumberStore {
             Number number = new Number(numberJSON);
             long value = number.getValue();
             numbers.put(value, number);
+
+            if (number.isPrime()) {
+                nthPrimes.put(number.getPrimeIndex(), number.getValue());
+            }
+        }
+    }
+
+    public static void loadNthPrimes(PApplet p) {
+        JSONArray numberData = p.loadJSONArray("out/nthPrimes.json");
+
+        for (int i = 0; i < numberData.size(); i++) {
+            JSONObject nthPrimeJSON = numberData.getJSONObject(i);
+            long n = nthPrimeJSON.getLong("n");
+            long nthPrime = nthPrimeJSON.getLong("nthPrime");
+            nthPrimes.put(n, nthPrime);
         }
 
     }
@@ -98,6 +112,20 @@ public class NumberStore {
         }
 
         p.saveJSONArray(numberData, "data/out/numbers.json");
+    }
+
+    public static void saveNthPrimes(PApplet p) {
+        JSONArray numberData = new JSONArray();
+
+        for (long n: nthPrimes.keySet()) {
+            long nthPrime = nthPrimes.get(n);
+            JSONObject nthPrimeJSON = new JSONObject();
+            nthPrimeJSON.setLong("n", n);
+            nthPrimeJSON.setLong("nthPrime", nthPrime);
+            numberData.append(nthPrimeJSON);
+        }
+
+        p.saveJSONArray(numberData, "data/out/nthPrimes.json");
     }
 
 }
