@@ -72,7 +72,7 @@ public class Number {
     private void buildNumber() {
         long possiblePrimeIndex = PrimeIndexRequester.requestPrimeIndex(value);
         long nthPrime = NthPrimeRequester.requestNthPrime(possiblePrimeIndex);
-        boolean validResults = possiblePrimeIndex != -1 && nthPrime != -1;
+        boolean validResults = (possiblePrimeIndex != -1 && nthPrime != -1) || value == 1;
 
         if (validResults) {
             buildNumber(nthPrime, possiblePrimeIndex);
@@ -93,7 +93,7 @@ public class Number {
     }
 
     private void checkForValidPrimeFactors() {
-        if (primeFactors.isEmpty()) {
+        if (primeFactors.isEmpty() && value != 1) {
             primeFactors = null;
         }
     }
