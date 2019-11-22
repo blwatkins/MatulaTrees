@@ -14,6 +14,12 @@ public class MatulaTree {
         createTree(value);
     }
 
+    public String toString() {
+        String out = "MATULA TREE \n";
+        out += root.toString();
+        return out;
+    }
+
     private void createTree(long value) {
         createRoot(value);
     }
