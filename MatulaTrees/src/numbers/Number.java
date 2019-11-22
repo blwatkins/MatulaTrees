@@ -1,5 +1,6 @@
 // Number Class
-// Stores the prime factorization and n-th prime position of some number
+// Stores the value, prime factorization, and n-th prime position of some number
+// Numbers can be converted to JSON for file output
 
 package numbers;
 
