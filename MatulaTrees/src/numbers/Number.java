@@ -27,9 +27,9 @@ public class Number {
     }
 
     public Number(JSONObject number) {
-        value = number.getInt("value");
+        value = number.getLong("value");
         isPrime = number.getBoolean("isPrime");
-        primeIndex = number.getInt("primeIndex");
+        primeIndex = number.getLong("primeIndex");
         primeFactors = new ArrayList<>();
         loadPrimeFactors(number);
     }
