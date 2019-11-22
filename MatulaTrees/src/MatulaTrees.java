@@ -17,7 +17,7 @@ public class MatulaTrees extends PApplet {
     public void setup() {
         NumberStore.loadNumbers(this);
         NumberStore.loadNthPrimes(this);
-        MatulaTree m = new MatulaTree(199);
+        MatulaTree m = new MatulaTree(1);
         System.out.println(m);
         NumberStore.saveNumbers(this);
         NumberStore.saveNthPrimes(this);
