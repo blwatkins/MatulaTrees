@@ -1,3 +1,6 @@
+// Edge
+// A single edge of a Matula Tree
+
 package matulaTree;
 
 public class Edge {
