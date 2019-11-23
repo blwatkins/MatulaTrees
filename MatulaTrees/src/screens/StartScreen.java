@@ -13,7 +13,10 @@ public class StartScreen extends Screen {
 
     public void display() {
         p.background(0);
-        p.ellipse(p.mouseX, p.mouseY, 50, 50);
+        p.fill(255);
+        p.textAlign(p.CENTER, p.CENTER);
+        p.textSize(40);
+        p.text("Matula Trees", p.width / 2f, p.height / 2f);
     }
 
     public void keyPressed() {
@@ -21,7 +24,7 @@ public class StartScreen extends Screen {
     }
 
     public void mousePressed() {
-        p.fill(p.random(255));
+
     }
 
 }
