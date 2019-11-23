@@ -2,8 +2,13 @@ import processing.core.PApplet;
 
 import numbers.NumberStore;
 import matulaTree.MatulaTree;
+import screens.Screen;
+import screens.StartScreen;
 
 public class MatulaTrees extends PApplet {
+    Screen screen;
+    Screen startScreen;
+
 
     public static void main(String[] args) {
         String[] processingArgs = {"MatulaTrees"};
@@ -21,10 +26,21 @@ public class MatulaTrees extends PApplet {
         System.out.println(m);
 //        NumberStore.saveNumbers(this);
 //        NumberStore.saveNthPrimes(this);
+
+        startScreen = new StartScreen(this);
+        screen = startScreen;
     }
 
     public void draw() {
-        background(0);
+        screen.display();
+    }
+
+    public void keyPressed() {
+        screen.keyPressed();
+    }
+
+    public void mousePressed() {
+        screen.mousePressed();
     }
 
 }
